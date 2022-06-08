@@ -11,6 +11,9 @@ public class Institution {
     private String name;
     private String description;
 
+    public Institution() {
+    }
+
     public Long getId() {
         return id;
     }

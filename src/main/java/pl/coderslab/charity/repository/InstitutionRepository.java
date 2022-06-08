@@ -1,7 +1,7 @@
 package pl.coderslab.charity.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import pl.coderslab.charity.repository.entity.Institution;
 
-public interface InstitutionRepository extends CrudRepository<Institution, Long> {
+public interface InstitutionRepository extends JpaRepository<Institution, Long> {
 }

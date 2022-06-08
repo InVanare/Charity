@@ -19,7 +19,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String homeAction(Model model){
-        homeService.viewInstitutions(model);
+        homeService.displayInitData(model);
         return "index";
     }
 }
