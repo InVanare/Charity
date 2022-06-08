@@ -3,7 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
-<footer>
+<footer id="contact">
     <div class="contact">
         <h2>Skontaktuj się z nami</h2>
         <h3>Formularz kontaktowy</h3>
