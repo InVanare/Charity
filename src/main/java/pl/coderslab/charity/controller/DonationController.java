@@ -29,20 +29,8 @@ public class DonationController {
 
     @PostMapping("")
     public String donationFormSave(Donation donation) {
-        System.out.println("Data: ----------> " + donation.getId());
-        System.out.println("Data: ----------> " + donation.getQuantity());
-        donation.getCategories().stream().forEach(s-> System.out.println("Data: ----------> "
-                + s.getId() + " : " + s.getName()));
-        System.out.println("Data: ----------> " + donation.getInstitution().getId()
-                + " : " + donation.getInstitution().getName() + " : " + donation.getInstitution().getDescription());
-        System.out.println("Data: ----------> " + donation.getStreet());
-        System.out.println("Data: ----------> " + donation.getCity());
-        System.out.println("Data: ----------> " + donation.getZipCode());
-        System.out.println("Data: ----------> " + donation.getPickUpDate());
-        System.out.println("Data: ----------> " + donation.getPickUpTime());
-        System.out.println("Data: ----------> " + donation.getPickUpComment());
-        System.out.println("Data: ----------> " + donation.getPhone());
-        return "donation";
+        donationService.save(donation);
+        return "form-confirmation";
     }
 
 }

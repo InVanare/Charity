@@ -135,7 +135,7 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:radiobutton path="institution" value="${institution.id}"/>
+                            <form:radiobutton path="institution" value="${institution.id}" title="${institution.name}"/>
                             <input type="hidden" name="_institution" value="on">
                             <span class="checkbox radio"></span>
                             <span class="description">
@@ -156,7 +156,7 @@
 
             <!-- STEP 5 -->
             <div data-step="4">
-                <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
+                <h3>Podaj adres oraz termin odbioru rzeczy przez kuriera:</h3>
 
                 <div class="form-section form-section--columns">
                     <div class="form-section--column">
@@ -217,14 +217,14 @@
                             <li>
                                 <span class="icon icon-bag"></span>
                                 <span class="summary--text"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
+                                >worki rzeczy dla potrzebujących w ilości: <b id="summary_bags"></b></span
                                 >
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
+                                >Dla fundacji "<b id="summary_institution"></b>"</span
                                 >
                             </li>
                         </ul>
@@ -234,19 +234,19 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>Prosta 51</li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
+                                <li id="summary_street"></li>
+                                <li id="summary_city"></li>
+                                <li id="summary_zipCode"></li>
+                                <li id="summary_phone"></li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
+                                <li id="summary_pickUpDate"></li>
+                                <li id="summary_pickUpTime"></li>
+                                <li id="summary_pickUpComment"></li>
                             </ul>
                         </div>
                     </div>

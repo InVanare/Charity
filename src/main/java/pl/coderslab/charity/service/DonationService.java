@@ -7,6 +7,7 @@ import pl.coderslab.charity.repository.CategoryRepository;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.repository.InstitutionRepository;
 import pl.coderslab.charity.repository.entity.Category;
+import pl.coderslab.charity.repository.entity.Donation;
 import pl.coderslab.charity.repository.entity.Institution;
 
 @Service
@@ -28,5 +29,9 @@ public class DonationService {
         Iterable<Institution> institutionIterable = institutionRepository.findAll();
         model.addAttribute("categories", categoryIterable);
         model.addAttribute("institutions", institutionIterable);
+    }
+
+    public void save(Donation donation) {
+        donationRepository.save(donation);
     }
 }
