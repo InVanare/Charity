@@ -126,7 +126,9 @@ document.addEventListener("DOMContentLoaded", function() {
         btn.addEventListener("click", e => {
           e.preventDefault();
           this.currentStep++;
+          //validate(this.currentStep);
           this.updateForm();
+
         });
       });
 
@@ -135,7 +137,9 @@ document.addEventListener("DOMContentLoaded", function() {
         btn.addEventListener("click", e => {
           e.preventDefault();
           this.currentStep--;
+          //validate(this.currentStep);
           this.updateForm();
+
         });
       });
 
@@ -148,9 +152,26 @@ document.addEventListener("DOMContentLoaded", function() {
      * Show next or previous section etc.
      */
     updateForm() {
-      this.$step.innerText = this.currentStep;
 
-      // TODO: Validation
+      switch (this.currentStep-1) {
+        case 1:
+          validationStep1();
+          break;
+        case 2:
+          validationStep2();
+          break;
+        case 3:
+          validationStep3();
+          break;
+        case 4:
+          validationStep4();
+          const errorForm = document.querySelector(".error-inactive");
+          if (empty(errorForm)) {
+            this.currentStep--;
+          }
+          break;
+      }
+      this.$step.innerText = this.currentStep;
 
       this.slides.forEach(slide => {
         slide.classList.remove("active");
@@ -171,4 +192,100 @@ document.addEventListener("DOMContentLoaded", function() {
   if (form !== null) {
     new FormSteps(form);
   }
+
+  function validationStep1() {
+    let isPresent = false;
+    document.querySelectorAll("[name='categories']").forEach(checkbox => {
+      if (checkbox.checked) {
+        isPresent = true;
+      }
+    });
+    if (isPresent == false) {
+      displayError("Musisz wybrać przynajmniej jedną kategorię");
+    } else {
+      removeError("Musisz wybrać przynajmniej jedną kategorię");
+    }
+  }
+
+  function validationStep2() {
+    if (document.querySelector("[name='quantity']").value > 0){
+      removeError("Musisz zapełnić chociaż jeden worek");
+    } else {
+      displayError("Musisz zapełnić chociaż jeden worek");
+    }
+  }
+
+  function validationStep3() {
+    let isPresent = false;
+    document.querySelectorAll("[name=institution]").forEach(radio => {
+      if (radio.checked) {
+        isPresent = true;
+      }
+    });
+    if (isPresent) {
+      removeError("Musisz wybrać fundację, której chcesz przekazać dary");
+    } else {
+      displayError("Musisz wybrać fundację, której chcesz przekazać dary")
+    }
+  }
+
+  function validationStep4() {
+    let street = document.querySelector("[name=street]");
+    let city = document.querySelector("[name=city]");
+    let zipCode = document.querySelector("[name=zipCode]");
+    let phone = document.querySelector("[name=phone]");
+    let pickUpDate = document.querySelector("[name=pickUpDate]");
+    let pickUpTime = document.querySelector("[name=pickUpTime]");
+    let pickUpComment = document.querySelector("[name=pickUpComment]");
+    let patterZipCode = /^[0-9]{2}-[0-9]{3}$/;
+    let patterPhone =  /(?<!\w)(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)/;
+
+    if (empty(street.value) || empty(city.value) || empty(zipCode.value) || empty(phone.value)) {
+      displayError("Musisz podać prawidłowe dane do odbioru");
+    } else {
+      if (patterZipCode.test(zipCode.value) && patterPhone.test(phone.value)) {
+        removeError("Musisz podać prawidłowe dane do odbioru");
+      } else {
+        displayError("Musisz podać prawidłowe dane do odbioru");
+      }
+    }
+
+    if (empty(pickUpDate.value) || empty(pickUpTime.value)) {
+      displayError("Musisz podać prawidłowy czas odbioru");
+    } else {
+      removeError("Musisz podać prawidłowy czas odbioru");
+    }
+  }
+
+  function displayError(text) {
+    const errorForm = document.querySelector("#error");
+    if (!errorForm.innerHTML.includes(text)) {
+      errorForm.innerHTML = errorForm.innerHTML + text + ".<br>";
+      errorForm.classList.replace("error-inactive", "error-active");
+    }
+  }
+
+  function removeError(text) {
+    const errorForm = document.querySelector("#error");
+    errorForm.innerHTML = errorForm.innerHTML.replace(text + ".<br>", "");
+    if (empty(errorForm.innerHTML)) {
+      errorForm.classList.replace("error-active", "error-inactive");
+    }
+  }
+
+  function empty(e) {
+    switch (e) {
+      case "":
+      case 0:
+      case "0":
+      case null:
+      case false:
+      case undefined:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+
 });

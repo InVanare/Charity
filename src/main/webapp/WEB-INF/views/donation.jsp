@@ -79,7 +79,9 @@
     </div>
 
     <div class="form--steps-container">
-        <div class="form--steps-counter">Krok <span>1</span>/4</div>
+        <div class="form--steps-counter">Krok <span>1</span>/4
+            <h4 id="error" class="error-inactive"></h4>
+        </div>
 
         <%--@elvariable id="donation" type="pl.coderslab.charity.repository.entity.Donation"--%>
         <form:form method="post" modelAttribute="donation">
@@ -193,7 +195,7 @@
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <textarea name="pickUpComment" rows="5"></textarea>
+                                <textarea name="pickUpComment" rows="5" placeholder="Brak uwag"></textarea>
                             </label>
                         </div>
                     </div>
