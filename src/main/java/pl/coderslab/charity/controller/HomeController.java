@@ -1,11 +1,10 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import pl.coderslab.charity.service.HomeService;
-
 
 @Controller
 public class HomeController {
@@ -17,7 +16,7 @@ public class HomeController {
         this.homeService = homeService;
     }
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String homeAction(Model model){
         homeService.displayInitData(model);
         return "index";
