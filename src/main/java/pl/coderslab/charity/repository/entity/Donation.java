@@ -28,6 +28,8 @@ public class Donation {
     private LocalTime pickUpTime;
     private String pickUpComment;
     private String phone;
+    @ManyToOne
+    private User user;
 
     public Long getId() {
         return id;

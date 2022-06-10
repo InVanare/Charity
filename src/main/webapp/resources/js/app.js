@@ -295,13 +295,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let pickUpDate = document.querySelector("[name=pickUpDate]").value;
         let pickUpTime = document.querySelector("[name=pickUpTime]").value;
         let pickUpComment = document.querySelector("[name=pickUpComment]").value;
+        let institution = document.querySelector("[name=institution]:checked").title;
 
         document.querySelector("#summary_bags").innerHTML = quantity;
-        document.querySelectorAll("[name=institution]").forEach(radio => {
-            if (radio.checked) {
-                document.querySelector("#summary_institution").innerHTML = radio.title;
-            }
-        });
+        document.querySelector("#summary_institution").innerHTML = institution;
         document.querySelector("#summary_street").innerHTML = street;
         document.querySelector("#summary_city").innerHTML = city;
         document.querySelector("#summary_zipCode").innerHTML = zipCode;
