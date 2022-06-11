@@ -25,6 +25,7 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String sendUserData(UserCreationDto userCreationDto, Model model) {
+        registrationService.savaData(userCreationDto, model);
         return "registration-confirmation";
     }
 }

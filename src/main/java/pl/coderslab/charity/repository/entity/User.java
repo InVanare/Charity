@@ -71,7 +71,7 @@ public class User implements UserDetails {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = encode(password);
     }
 
     public String getMail() {

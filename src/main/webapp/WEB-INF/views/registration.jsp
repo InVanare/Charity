@@ -25,13 +25,16 @@
     <%--@elvariable id="user" type="pl.coderslab.charity.repository.entity.User"--%>
     <form:form method="post" modelAttribute="user">
         <div class="form-group">
-            <input type="email" name="email" placeholder="Email" />
+            <input type="text" name="name" placeholder="Nazwa użytkownika" />
         </div>
         <div class="form-group">
-            <input type="password" name="password" placeholder="Hasło" />
+            <input type="email" name="mail" placeholder="Email" />
         </div>
         <div class="form-group">
-            <input type="password" name="password2" placeholder="Powtórz hasło" />
+            <input type="password" name="pass" placeholder="Hasło" />
+        </div>
+        <div class="form-group">
+            <input type="password" name="pass2" placeholder="Powtórz hasło" />
         </div>
 
         <div class="form-group form-group--buttons">
