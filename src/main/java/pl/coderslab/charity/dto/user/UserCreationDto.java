@@ -1,4 +1,4 @@
-package pl.coderslab.charity.dto;
+package pl.coderslab.charity.dto.user;
 
 import pl.coderslab.charity.repository.entity.Role;
 

@@ -35,10 +35,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Donation> donations;
     private String createdBy;
-    private boolean accountNonExpired;
-    private boolean accountNonLocked;
-    private boolean credentialsNonExpired;
-    private boolean enabled;
+    private boolean accountNonExpired = true;
+    private boolean accountNonLocked = true;
+    private boolean credentialsNonExpired = true;
+    private boolean enabled = true;
 
     public Long getId() {
         return id;
