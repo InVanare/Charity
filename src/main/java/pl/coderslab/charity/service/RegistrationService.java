@@ -27,7 +27,7 @@ public class RegistrationService {
         this.mapper = mapper;
     }
 
-    public void savaData(UserCreationDto userCreationDto, Model model) {
+    public void saveData(UserCreationDto userCreationDto, Model model) {
         userCreationDto.setRole(List.of(roleRepository.findByName("ROLE_USER").orElseThrow(RuntimeException::new)));
         if (userRepository.findByUsernameOrMail(userCreationDto.getName(), userCreationDto.getMail()).isEmpty()) {
             userRepository.save(mapper.toUser(userCreationDto));

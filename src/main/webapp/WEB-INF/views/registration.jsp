@@ -22,6 +22,7 @@
 
 <section class="login-page">
     <h2>Załóż konto</h2>
+    <h3 id="error" class="error-inactive"></h3>
     <%--@elvariable id="user" type="pl.coderslab.charity.repository.entity.User"--%>
     <form:form method="post" modelAttribute="user">
         <div class="form-group">
@@ -45,5 +46,6 @@
 </section>
 
 <%@ include file="footer.jsp" %>
+<script src="<c:url value="resources/js/registration.js"/>"></script>
 </body>
 </html>
