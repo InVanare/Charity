@@ -10,9 +10,11 @@
         <li class="logged-user">
             Witaj <sec:authorize access="isAuthenticated()"><sec:authentication property="principal.username"/></sec:authorize>
             <ul class="dropdown">
-                <li><a href="<c:url value="/dashboard"/>">Panel</a></li>
-                <li><a href="#">Profil</a></li>
-                <li><a href="#">Moje zbiórki</a></li>
+                <sec:authorize access="hasRole('ADMIN')">
+                    <li><a href="<c:url value="/admin/dashboard"/>">Panel administratora</a></li>
+                </sec:authorize>
+                <li><a href="<c:url value="/profile"/>">Profil</a></li>
+                <li><a href="<c:url value="/my_donations"/>">Moje zbiórki</a></li>
                 <li><a href="<c:url value="/logout"/>">Wyloguj</a></li>
             </ul>
         </li>

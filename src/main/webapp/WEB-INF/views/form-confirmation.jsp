@@ -14,12 +14,12 @@
 <body>
 <header class="header--form-page">
     <nav class="container container--70">
-        <%@ include file="header-login.jsp" %>
+        <%@ include file="header.jsp" %>
     </nav>
 
     <div class="slogan container container--90">
         <h2>
-            Dziękujemy za przesłanie formularza Na maila prześlemy wszelkie
+            Dziękujemy za przesłanie formularza. Na maila prześlemy wszelkie
             informacje o odbiorze.
         </h2>
     </div>
