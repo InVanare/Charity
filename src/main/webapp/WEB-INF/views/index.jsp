@@ -15,7 +15,7 @@
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
-        <%@ include file="header-without-login.jsp" %>
+        <%@ include file="header.jsp" %>
     </nav>
 
 
@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="<c:url value="/registration"/>" class="btn btn--large">Załóż konto</a>
 </section>
 
 <section id="about-us" class="about-us">

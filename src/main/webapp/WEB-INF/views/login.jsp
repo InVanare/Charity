@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -21,31 +22,29 @@
 </header>
 
 <section class="login-page">
-    <h2>Załóż konto</h2>
+    <sec:authorize access="isAuthenticated()">
+        <h2>Jesteś już zalogowany.</h2>
+    </sec:authorize>
+    <sec:authorize access="!isAuthenticated()">
+    <h2>Panel logowania</h2>
     <h3 id="error" class="error-inactive"></h3>
-    <%--@elvariable id="user" type="pl.coderslab.charity.repository.entity.User"--%>
-    <form:form method="post" modelAttribute="user">
+    <form method="post">
         <div class="form-group">
-            <input type="text" name="name" placeholder="Nazwa użytkownika" />
+            <input type="text" name="username" placeholder="Nazwa użytkownika" />
         </div>
         <div class="form-group">
-            <input type="email" name="mail" placeholder="Email" />
-        </div>
-        <div class="form-group">
-            <input type="password" name="pass" placeholder="Hasło" />
-        </div>
-        <div class="form-group">
-            <input type="password" name="pass2" placeholder="Powtórz hasło" />
+            <input type="password" name="password" placeholder="Hasło" />
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="/login" class="btn btn--without-border">Zaloguj się</a>
-            <button class="btn" id="registration" type="button">Załóż konto</button>
+            <button class="btn" id="login" type="submit">Zaloguj się</button>
+            <a href="/registration" class="btn btn--without-border">Załóż konto</a>
         </div>
-    </form:form>
+    </form>
+    </sec:authorize>
 </section>
 
 <%@ include file="footer.jsp" %>
-<script src="<c:url value="resources/js/registration.js"/>"></script>
+<%--<script src="<c:url value="resources/js/registration.js"/>"></script>--%>
 </body>
 </html>

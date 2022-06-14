@@ -16,8 +16,7 @@
 <body>
 <header class="header--form-page">
     <nav class="container container--70">
-
-        <%@ include file="header-login.jsp" %>
+        <%@ include file="header.jsp" %>
     </nav>
 
     <div class="slogan container container--90">

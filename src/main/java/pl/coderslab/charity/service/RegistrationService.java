@@ -35,12 +35,5 @@ public class RegistrationService {
         } else {
             model.addAttribute("information", INFO_ERROR_USER_EXIST);
         }
-       /* System.out.println(userCreationDto.getName());
-        System.out.println(userCreationDto.getPass());
-        System.out.println(userCreationDto.getMail());
-        System.out.println(userCreationDto.getActive());
-        System.out.println(userCreationDto.getCreated());
-        System.out.println(userCreationDto.getLastLogin());
-        //userCreationDto.getRole().stream().forEach(System.out::println);*/
     }
 }
