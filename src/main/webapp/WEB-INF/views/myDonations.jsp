@@ -102,15 +102,28 @@
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${pageList}" var="page" varStatus="pageStatus">
-                                <tr>
-                                    <td>${pageStatus.index+1+(presentPage*5)}</td>
-                                    <td>${page.city} ${page.zipCode}<br>${page.street}</td>
-                                    <td>${page.pickUpDate} : ${page.pickUpTime}</td>
-                                </tr>
+                                    <tr>
+                                        <td>${pageStatus.index+1+(presentPage*5)}</td>
+                                        <td>${page.city} ${page.zipCode}<br>${page.street}</td>
+                                        <td>${page.pickUpDate} : ${page.pickUpTime}</td>
+                                    </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
                         </div>
+
+                        <div id="dataTable_paginate" class="dataTables_paginate paging_simple_numbers">
+                            <ul class="pagination">
+                                <c:forEach begin="0" end="${Math.ceil(maxResult/5)-1}" varStatus="stat">
+                                    <li class="paginate_button page-item <c:if test="${stat.index == presentPage}">active</c:if>">
+                                        <a class="page-link" href="<c:url value="/my_donations/?page=${stat.index}"/>">${stat.index+1}</a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+
+                        <a href="<c:url value="/donation"/> " class="btn btn-primary btn-lg">Przekaż dary</a>
+
                     </div>
                 </div>
 
@@ -140,27 +153,7 @@
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
-<%--
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
---%>
+
 <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>
 <script src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 

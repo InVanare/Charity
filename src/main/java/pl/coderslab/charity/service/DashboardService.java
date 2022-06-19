@@ -38,7 +38,7 @@ public class DashboardService {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new EntityExistsException("User " + username + " doesn't exist"));
         Integer page = parseStringToInt(pageString);
         Integer maxResults = donationRepository.countAllByUser(username);
-        Pageable pageable = PageRequest.of(page, PAGE_SIZE, Sort.by("id"));
+        Pageable pageable = PageRequest.of(page, PAGE_SIZE, Sort.by("id").descending());
 
         List<Donation> donationList = donationRepository.findAllByUser(user, pageable);
         model.addAttribute("maxResult", maxResults);
