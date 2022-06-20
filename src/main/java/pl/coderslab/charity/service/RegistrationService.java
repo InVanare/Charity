@@ -13,10 +13,10 @@ import java.util.List;
 @Service
 public class RegistrationService {
 
-    private RoleRepository roleRepository;
-    private UserRepository userRepository;
-    private Mapper mapper;
-    private EmailService emailService;
+    private final RoleRepository roleRepository;
+    private final UserRepository userRepository;
+    private final Mapper mapper;
+    private final EmailService emailService;
 
     private final static String INFO_OK = "Dziękujemy za założenie konta.";
     private final static String INFO_ERROR_USER_EXIST = "Przepraszamy, użytkownik o podanych danych już istnieje.";

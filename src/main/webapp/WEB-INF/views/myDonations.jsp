@@ -114,11 +114,25 @@
 
                         <div id="dataTable_paginate" class="dataTables_paginate paging_simple_numbers">
                             <ul class="pagination">
-                                <c:forEach begin="0" end="${Math.ceil(maxResult/5)-1}" varStatus="stat">
+                                <c:set value="${Math.ceil(maxResult/5)-1}" var="ceil"/>
+                                <c:choose>
+                                    <c:when test="${ceil < 0}">
+                                        <c:set value="0" var="page"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:set value="${ceil}" var="page"/>
+                                    </c:otherwise>
+                                </c:choose>
+                                
+                                <c:if test="${ceil < 0}">
+                                    
+                                </c:if>
+                                <c:forEach begin="0" end="${page}" varStatus="stat">
                                     <li class="paginate_button page-item <c:if test="${stat.index == presentPage}">active</c:if>">
                                         <a class="page-link" href="<c:url value="/my_donations/?page=${stat.index}"/>">${stat.index+1}</a>
                                     </li>
                                 </c:forEach>
+
                             </ul>
                         </div>
 

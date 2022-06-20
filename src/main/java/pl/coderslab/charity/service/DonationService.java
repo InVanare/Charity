@@ -23,18 +23,21 @@ public class DonationService {
     private final InstitutionRepository institutionRepository;
     private final UserRepository userRepository;
     private final SecurityContext securityContext;
+    private final EmailService emailService;
 
     @Autowired
     public DonationService(DonationRepository donationRepository,
                            CategoryRepository categoryRepository,
                            InstitutionRepository institutionRepository,
                            UserRepository userRepository,
-                           SecurityContext securityContext) {
+                           SecurityContext securityContext,
+                           EmailService emailService) {
         this.donationRepository = donationRepository;
         this.categoryRepository = categoryRepository;
         this.institutionRepository = institutionRepository;
         this.userRepository = userRepository;
         this.securityContext = securityContext;
+        this.emailService = emailService;
     }
 
     public void displayInitData(Model model) {
@@ -44,10 +47,16 @@ public class DonationService {
         model.addAttribute("institutions", institutionIterable);
     }
 
-    public void save(Donation donation) {
+    public void save(Donation donation, Model model) {
         String username = securityContext.getName();
         User user = userRepository.findByUsername(username).orElseThrow(() -> new EntityExistsException("User " + username + " doesn't exist"));
         donation.setUser(user);
         donationRepository.save(donation);
+        model.addAttribute("donation", donation);
+        model.addAttribute("username", username);
+        emailService.sendMessageFromTemplate(user.getMail(),
+                "Przekazanie darów",
+                "email-donation.ftlh",
+                model.asMap());
     }
 }

@@ -27,8 +27,8 @@ public class DonationController {
     }
 
     @PostMapping("")
-    public String donationFormSave(Donation donation) {
-        donationService.save(donation);
+    public String donationFormSave(Donation donation, Model model) {
+        donationService.save(donation, model);
         return "form-confirmation";
     }
 
